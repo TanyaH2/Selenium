@@ -46,7 +46,7 @@ public class HomeWork1 {
 		System.out.println(allOptions2.size() - 1);
 
 		Thread.sleep(3000);
-		driver.quit();
+		driver.quit();  
 	}
 
 }
