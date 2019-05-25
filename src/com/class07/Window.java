@@ -11,6 +11,17 @@ import utils.CommonMethods;
 
 public class Window extends CommonMethods {
 
+	/**
+	 * 1. identify parent id
+     * 2. get windowHandles()
+     * 3. using iterator loop through all elements in set
+     * 4. using if check if childId is not matching parentId --> then switch to that child ID
+     * 5. get title of an ID and then close child window
+     * 6. switch back control to the parent window
+     * 7 repeat steps 2-6 .
+     * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		CommonMethods.setUpDriver("chrome", "http://uitestpractice.com/Students/Switchto");

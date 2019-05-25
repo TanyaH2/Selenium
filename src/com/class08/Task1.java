@@ -1,5 +1,6 @@
 package com.class08;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -22,9 +23,24 @@ public class Task1 extends CommonMethods {
 		// TODO Auto-generated method stub
 		setUpDriver("chrome", "http://uitestpractice.com/Students/Index");
 	
+//       driver.findElement(By.xpath("//a[text()='Actions']")).click();
+//       driver.findElement(By.xpath("//button[text()='Click Me !']")).click();
+//       Alert alert=driver.switchTo().alert();
+//       driver.findElement(By.id("confirm")).click();
+
+
        driver.findElement(By.xpath("//a[text()='Actions']")).click();
-       driver.findElement(By.xpath("//button[text()='Click Me !']")).click();
-       
+		
+		WebElement clickMe= driver.findElement(By.xpath("//button[text()='Click Me !']"));
+		Actions action = new Actions(driver);
+		action.moveToElement(clickMe).click().perform();
+		Alert alertOne= driver.switchTo().alert();
+		alertOne.accept();
+		WebElement dc= driver.findElement(By.xpath("//button[text()='Double Click Me !']"));
+		action.doubleClick(dc).perform();
+		Alert alertTwo= driver.switchTo().alert();
+		alertTwo.accept();
+         driver .close();
 		
 	}
 
