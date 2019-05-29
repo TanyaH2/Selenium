@@ -18,4 +18,6 @@ public class RightClick extends CommonMethods {
 		driver.close();
 
 	}
+	
+	
 }

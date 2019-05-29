@@ -3,17 +3,16 @@ package com.class05;
 import java.util.List;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 
-public class RadioDemo {
+import utils.CommonMethods;
+
+public class RadioDemo extends  CommonMethods{
 
 	public static void main(String[] args) throws InterruptedException {
-		System.setProperty("webdriver.chrome.driver", "/Users/tetianahatley/Selenium/chromedriver");
-		WebDriver driver = new ChromeDriver();
+		setUpDriver("Chrome", "https://www.toolsqa.com/automation-practice-form/");
 		driver.manage().window().fullscreen();
-		driver.get("https://www.toolsqa.com/automation-practice-form/");
+		//driver.get("https://www.toolsqa.com/automation-practice-form/");
 		WebElement maleRadio = driver.findElement(By.id("sex-0"));
 		System.out.println(maleRadio.isDisplayed());// true
 		System.out.println(maleRadio.isEnabled());// true
@@ -31,9 +30,10 @@ public class RadioDemo {
 		System.out.println(professionList.size());
 
 		for (WebElement profession : professionList) {
+			System.out.println(profession.getSize());
 
 			if (profession.isEnabled()) {
-
+         //System.out.println(profession.getSize());
 				String value = profession.getAttribute("value");
 				System.out.println(value);
 
@@ -43,6 +43,6 @@ public class RadioDemo {
 			}
 		}
 		Thread.sleep(3000);
-		driver.quit();
+		//driver.quit();
 	}
 }

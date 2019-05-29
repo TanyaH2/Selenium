@@ -18,7 +18,8 @@ public class WebDriverDemo extends CommonMethods{
 		driver.findElement(By.linkText("This is a Ajax link")).click();
 		
 		WebDriverWait wait=new WebDriverWait(driver, 30);
-		//wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.ContactUs")));
+		
+	//wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.ContactUs")));
 		//or
 		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("div.ContactUs")));
 		
