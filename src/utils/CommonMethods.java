@@ -40,7 +40,7 @@ public class CommonMethods {
 
 	
 	/**
-	 * This method will Chech if date is displayed in the table
+	 * This method will Check if data is displayed in the table
 	 * 
 	 * @author tetianahatley
 	 * @param List<WebElement> element, String text
@@ -59,7 +59,51 @@ public class CommonMethods {
 	}
 	}
 	
+	/**
+	 * This method will Check if displayed data is as expected
+	 * 
+	 * @author tetianahatley
+	 * @param List<WebElement> element, String text
+	 * 
+	 */
+	public static void orderDataCheck(WebElement element, String text) {
 	
+	WebElement dataCheck = element;
+	if (dataCheck.isDisplayed()){
+		String present = dataCheck.getAttribute("value");
+//		System.out.println(present);
+		if (present.equalsIgnoreCase(text)) {
+			System.out.println(text +" - text is present");
+		} else {
+		System.out.println(text+" - text is not present");
+	}
+	}
+	}
+	/**
+	 * This method will check if specified Radio Button is selected
+	 * 
+	 * @author tetianahatley
+	 * @param List<WebElement> element, String text
+	 * 
+	 */
+	public static void radioButtonCheck(List<WebElement> element, String text) {
+
+		List<WebElement> listOfElements = element;
+
+		for (WebElement elementOption : listOfElements) {
+
+			if (elementOption.isDisplayed()) {
+				String value = elementOption.getText();
+//				System.out.println(value);
+				if (value.equalsIgnoreCase(text)) {
+					System.out.println("Option of "+text+" is selected");
+				}
+				}else {
+				System.out.println("No such option of Radio Button is availible");
+				
+			}
+		}
+	}
 	/**
 	 * This method will select specified Radio Button
 	 * 
@@ -78,7 +122,7 @@ public class CommonMethods {
 //				System.out.println(value);
 				if (value.equalsIgnoreCase(text)) {
 					elementOption.click();
-					System.out.println("Option of "+text+"is selected");
+					System.out.println("Option of "+text+" is selected");
 				}
 				}else {
 				System.out.println("No such option of Radio Button is availible");

@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.Select;
 import utils.CommonMethods;
 
 public class Task2Manel extends CommonMethods {
-	    public static void main(String[] args) {
+	    public static void main(String[] args) throws InterruptedException {
 	        // logging in and registering for the program
 	        setUpDriver("chrome", "http://secure.smartbearsoftware.com/samples/testcomplete11/WebOrders/Login.aspx");
 	        driver.findElement(By.xpath("//input[@id='ctl00_MainContent_username']")).sendKeys("Tester");
@@ -34,7 +34,11 @@ public class Task2Manel extends CommonMethods {
 	        driver.findElement(By.xpath("//a[@class='btn_light']")).click();
 	        driver.findElement(By.xpath("//a[text()='View all orders']")).click();
 	        // Getting rows/columns from table
+			Thread.sleep(3000);
+
 	        List<WebElement> rows = driver.findElements(By.xpath("//table[@class='SampleTable']/tbody/tr"));
+			Thread.sleep(3000);
+
 	        List<WebElement> columns = driver.findElements(By.xpath("//table[@class='SampleTable']/tbody/tr/th"));
 	        // verifying information
 	        String expectedName = "Sydney White";
