@@ -1,4 +1,4 @@
-package com.class10;
+package com.groupTasks;
 
 import java.util.List;
 
@@ -6,12 +6,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import utils.CommonMethods;
 
-public class Task1 extends CommonMethods {
+public class GroupTaskT1 extends CommonMethods {
 
 	public static void main(String[] args) throws InterruptedException {
+		
 		/**
 		 * TC 1: Users Application Form Fill 
 		 * 
@@ -23,10 +25,11 @@ public class Task1 extends CommonMethods {
 		 * 
 		 * MUST USE Functions:
 		 */
+		
 		// 1.Open chrome browser
 		// 2.Go to “http://uitestpractice.com/”
-		String url = "http://uitestpractice.com/";
-		setUpDriver("Chrome", url);
+		String url = "http://uitestpractice.com/";		
+		setUpDriver("chrome", url);
 
 		// 3.Click on “Forms” link
 		driver.findElement(By.xpath("//a[text()='Form']")).click();
@@ -82,38 +85,12 @@ public class Task1 extends CommonMethods {
 		WebElement password = driver.findElement(By.cssSelector("input#pwd"));
 		sendText(password, "darewolf");
 
+		// Submit
+		driver.findElement(By.xpath("//button[text()='Submit']")).click();
+	
 		// 5.Close the browser
-		Thread.sleep(2000);
-//		driver.quit();
+		driver.quit();
 	}
 
 }
-//public static void SelectBirthDate(String Month, String Year, String  day) {
-//Actions action = new Actions(driver);
-//WebElement DatePicker = driver.findElement(By.cssSelector("input#datepicker"));
-//
-//action.moveToElement(DatePicker).click().perform();
-//driver.findElement(By.cssSelector("a[title='Next']")).click();
-//driver.findElement(By.cssSelector("a[title='Next']")).click();
-//		
-//WebElement SelectMonth = driver.findElement(By.cssSelector("select.ui-datepicker-month"));
-//Select MonthSelect = new Select(SelectMonth);
-//String Monthsubstr = Month.substring(0,3);
-//MonthSelect.selectByVisibleText(Monthsubstr);
-//
-//WebElement SelectYear = driver.findElement(By.cssSelector("select.ui-datepicker-year"));
-//Select YearSelect = new Select(SelectYear);
-//YearSelect.selectByVisibleText(Year);
-//
-//
-//List<WebElement> cols = driver.findElements(By.xpath("//table[@class='ui-datepicker-calendar']/tbody/tr/td"));
-//
-//for (WebElement col : cols) {
-//	String text = col.getText();
-//	
-//	if (text.contains(day)){
-//		col.click();
-//	}
-//}
-////driver.findElement(By.xpath("//table[@class='ui-datepicker-calendar']/tbody/tr[3]/td[6]")).click();
-//}
+

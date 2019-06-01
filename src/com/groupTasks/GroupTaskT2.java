@@ -1,4 +1,4 @@
-package com.class10;
+package com.groupTasks;
 
 import java.util.List;
 
@@ -7,10 +7,10 @@ import org.openqa.selenium.WebElement;
 
 import utils.CommonMethods;
 
-public class Task2 extends CommonMethods {
+public class GroupTaskT2 extends CommonMethods {
 
 	public static void main(String[] args) throws InterruptedException {
-		// TODO Auto-generated method stub
+		
 		/**
 		 * TC 2: Table headers and rows verification
 		 * 1.Open browser and go to:
@@ -86,12 +86,17 @@ public class Task2 extends CommonMethods {
 	     orderDataCheck(driver.findElement(By.xpath("//input[@name='ctl00$MainContent$fmwOrder$TextBox1']")), "12/20");
 		
 	     // 7.Update street address
-	     String newAddress="563 Wall Str.";
-	     sendText(driver.findElement(By.cssSelector("input#ctl00_MainContent_fmwOrder_TextBox2")), newAddress);
-	     driver.findElement(By.cssSelector("a.btn_light")).click();
+	      WebElement address=  driver.findElement(By.cssSelector("input#ctl00_MainContent_fmwOrder_TextBox2"));
+		  String oldAddress=address.getAttribute("Value");
+		  String replacement= oldAddress.replaceAll("1145 Winterfell Dr.", "1466 Wall Str.");
+		  driver.findElement(By.cssSelector("input#ctl00_MainContent_fmwOrder_TextBox2")).clear();
+		  driver.findElement(By.cssSelector("input#ctl00_MainContent_fmwOrder_TextBox2")).sendKeys(replacement);
+		  driver.findElement(By.xpath("//a[@class='btn_light']")).click();
+		  
 	     //8.Verify in the table that street has been updated
-	     dataCheck(driver.findElements(By.xpath("//table[@class='SampleTable']/tbody/tr/td")), newAddress);
+	      dataCheck(driver.findElements(By.xpath("//table[@class='SampleTable']/tbody/tr/td")), replacement);
 	 
-		driver.quit();
+	      Thread.sleep(2000);
+		  driver.quit();
 	}
 }

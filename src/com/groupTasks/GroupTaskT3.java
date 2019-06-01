@@ -1,4 +1,4 @@
-package com.class10;
+package com.groupTasks;
 
 import java.util.List;
 
@@ -7,11 +7,11 @@ import org.openqa.selenium.WebElement;
 
 import utils.CommonMethods;
 
-public class Task3 extends CommonMethods {
+public class GroupTaskT3 extends CommonMethods {
 
-	//@SuppressWarnings("unlikely-arg-type")
+
 	public static void main(String[] args) throws InterruptedException {
-		// TODO Auto-generated method stub
+		
 		/**
 		 * TC 3: Table headers and rows verification 
 		 * 1.Open chrome browser 
@@ -25,7 +25,7 @@ public class Task3 extends CommonMethods {
 		// 1.Open chrome browser
 		// 2.Go to “https://jqueryui.com/”
 		String url = "https://jqueryui.com/";
-		setUpDriver("Chrome", url);
+		setUpDriver("firefox", url);
 
 		// 3.Click on “Datepicker”
 		driver.findElement(By.xpath("//a[text()='Datepicker']")).click();
@@ -64,9 +64,6 @@ public class Task3 extends CommonMethods {
 		}
 		calendarDateSelection(driver.findElements(By.xpath("//table[@class='ui-datepicker-calendar']/tbody/tr/td")),"10");
 
-	
-		
-		
 		// 5.Verify date “08/10/2019” has been entered succesfully
 		
 		String verifingDate=driver.findElement(By.cssSelector("input.hasDatepicker")).getText();
@@ -82,8 +79,6 @@ public class Task3 extends CommonMethods {
 		
 
 		// 6.Close browser
-
-		Thread.sleep(5000);
 	    driver.quit();
 	}
 

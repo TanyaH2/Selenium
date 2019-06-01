@@ -1,4 +1,4 @@
-package com.class10;
+package com.groupTasks;
 
 import java.util.List;
 

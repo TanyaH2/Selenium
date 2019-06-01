@@ -33,6 +33,7 @@ public class TablesTask extends CommonMethods{
 		
 		List<WebElement> rows=driver.findElements(By.xpath("//table[contains(@id, 'orderGrid')]/tbody/tr"));
 		List<WebElement> cols=driver.findElements(By.xpath("//table[contains(@id, 'orderGrid')]/tbody/tr[1]/th"));
+		
 		String expected="Susan McLaren";
 		
 		for (int i=1; i<=rows.size(); i++) {
@@ -40,12 +41,24 @@ public class TablesTask extends CommonMethods{
 		
 			if(rowText.contains(expected)) {
 				System.out.println(expected+" is present in row "+i);
-			}		
+				driver.findElement(By.xpath("//table[contains(@id,'Content_order')]/tbody/tr["+i+"]/td[13]")).click();
+			}			
 		}
+	String name=	driver.findElement(By.xpath("//input[@value='Susan McLaren']")).getText();
+	
+	String[] newName=name.split(" ");
+	for(String nName:newName) {
+		if(nName.equalsIgnoreCase("McLaren")) {
+			nName.replaceAll(nName, "McMuffin");
+			System.out.println(nName);
+		}
+	}
+	
 		
 		
 		
-		driver.quit();
+		
+//		driver.quit();
 	}
 
 }
