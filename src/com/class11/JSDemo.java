@@ -48,4 +48,13 @@ public class JSDemo extends CommonMethods{
 		Thread.sleep(7000);
 		driver.quit();
 	}
-}
+	
+	
+	}
+	
+
+
+
+
+
+

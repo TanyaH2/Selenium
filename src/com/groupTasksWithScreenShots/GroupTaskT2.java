@@ -1,4 +1,4 @@
-package com.groupTasks;
+package com.groupTasksWithScreenShots;
 
 import java.util.List;
 
@@ -28,7 +28,9 @@ public class GroupTaskT2 extends CommonMethods {
 		// “http://secure.smartbearsoftware.com/samples/testcomplete11/WebOrders/login.aspx”
 		String url = "http://secure.smartbearsoftware.com/samples/testcomplete11/WebOrders/login.aspx";
 		setUpDriver("chrome", url);
-
+		
+		takeScreenshot("Task2", "Browser");
+		
 		String Product="FamilyAlbum";
         String Quantity = "77";
         
@@ -47,6 +49,8 @@ public class GroupTaskT2 extends CommonMethods {
 		sendText(driver.findElement(By.cssSelector("input#ctl00_MainContent_password")), "test");
 		driver.findElement(By.cssSelector("input.button")).click();
 
+		takeScreenshot("Task2", "LogIn");
+		
 		// 3.Create an Order
 		driver.findElement(By.xpath("//a[text()='Order']")).click();
 		selectValueFromDD(driver.findElement(By.cssSelector("select#ctl00_MainContent_fmwOrder_ddlProduct")), Product);
@@ -62,17 +66,23 @@ public class GroupTaskT2 extends CommonMethods {
 		radioButton(driver.findElements(By.cssSelector("label[for*='cardList']")), Card);
 		sendText(driver.findElement(By.cssSelector("input#ctl00_MainContent_fmwOrder_TextBox6")), CardNum);
 		sendText(driver.findElement(By.xpath("//input[@name='ctl00$MainContent$fmwOrder$TextBox1']")), Expiration);
+		takeScreenshot("Task2", "CreatedOrder");
 		driver.findElement(By.cssSelector("a.btn_light")).click();
+		
 		driver.findElement(By.xpath("//a[@class='btn_light']")).click();
 
+		
 		// 4.Verify order of that person is displayed in the table “List of All Orders”
 		driver.findElement(By.xpath("//a[text()='View all orders']")).click();
 	
 		dataCheck(driver.findElements(By.xpath("//table[@class='SampleTable']/tbody/tr/td")), "Arya Stark");
 
+		
 		// 5.Click on edit of that specific order
 		driver.findElement(By.xpath("//table[contains(@id,'Content_order')]/tbody/tr[2]/td[13]")).click();
 
+		takeScreenshot("Task2", "ASVerifiedAndEdit");
+		
 		//6.Verify each order detail
 	     orderDataCheck(driver.findElement(By.cssSelector("select#ctl00_MainContent_fmwOrder_ddlProduct")), "FamilyAlbum");
 	     orderDataCheck(driver.findElement(By.xpath("//input[@onchange='productsChanged()']")), "77");
@@ -91,13 +101,16 @@ public class GroupTaskT2 extends CommonMethods {
 		  String replacement= oldAddress.replaceAll("1145 Winterfell Dr.", "1466 Wall Str.");
 		  driver.findElement(By.cssSelector("input#ctl00_MainContent_fmwOrder_TextBox2")).clear();
 		  driver.findElement(By.cssSelector("input#ctl00_MainContent_fmwOrder_TextBox2")).sendKeys(replacement);
+		  takeScreenshot("Task2", "AddressUpdate");
 		  driver.findElement(By.xpath("//a[@class='btn_light']")).click();
 		  
+		 
 	     //8.Verify in the table that street has been updated
 	      dataCheck(driver.findElements(By.xpath("//table[@class='SampleTable']/tbody/tr/td")), "1466 Wall Str.");
 	 
 	     
 		  driver.quit();
+		  System.out.println("passed");
 
 	}
 }

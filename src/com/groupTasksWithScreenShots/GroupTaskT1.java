@@ -1,5 +1,5 @@
 
-package com.groupTasks;
+package com.groupTasksWithScreenShots;
 
 import java.util.List;
 
@@ -31,10 +31,10 @@ public class GroupTaskT1 extends CommonMethods {
 		// 2.Go to “http://uitestpractice.com/”
 		String url = "http://uitestpractice.com/";		
 		setUpDriver("firefox", url);
-
+		takeScreenshot("Task1", "Browser");
 		// 3.Click on “Forms” link
 		driver.findElement(By.xpath("//a[text()='Form']")).click();
-
+		takeScreenshot("Task1", "FormsClick");
 		// 4.Fill out the entire form:
 		// First Name
 		sendText(driver.findElement(By.cssSelector("input#firstname")), "John");
@@ -85,10 +85,10 @@ public class GroupTaskT1 extends CommonMethods {
 		// Password
 		WebElement password = driver.findElement(By.cssSelector("input#pwd"));
 		sendText(password, "darewolf");
-
+		takeScreenshot("Task1", "FilledOutForm");
 		// Submit
 		driver.findElement(By.xpath("//button[text()='Submit']")).click();
-	
+		takeScreenshot("Task1", "Submit");
 		// 5.Close the browser
 		driver.quit();
 		

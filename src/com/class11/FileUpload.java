@@ -31,6 +31,7 @@ public class FileUpload extends CommonMethods{
 			System.out.println("File uploaded successfully");
 		}
 		
+		//steps to take screenshot
 		TakesScreenshot ts=(TakesScreenshot)driver;
 		File pic=ts.getScreenshotAs(OutputType.FILE);
 		try {

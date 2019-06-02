@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchFrameException;
 import org.openqa.selenium.OutputType;
@@ -21,7 +22,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class CommonMethods {
-                                         //SELENIUM
+	// SELENIUM
 	public static WebDriver driver;
 
 	public static void setUpDriver(String browser, String url) {
@@ -44,7 +45,6 @@ public class CommonMethods {
 		driver.get(url);
 	}
 
-	
 	/**
 	 * This method will Check if data is displayed in the table
 	 * 
@@ -53,18 +53,20 @@ public class CommonMethods {
 	 * 
 	 */
 	public static void dataCheck(List<WebElement> element, String text) {
-	
-    
-    List<WebElement> cells=element;	
-    String expected=text;
-	for (WebElement cell: cells) {
-		String cellText=cell.getText();
-		if(cellText.equalsIgnoreCase(expected)) {
-			System.out.println("Your order for "+text+" is displayed");
+
+		List<WebElement> cells = element;
+		String expected = text;
+		for (WebElement cell : cells) {
+			String cellText = cell.getText();
+			if (cellText.equalsIgnoreCase(expected)) {
+				System.out.println("Your order for " + text + " is displayed ");
+				break;
+			} else {
+				System.out.println(text + " - text is not present");
+			}
 		}
 	}
-	}
-	
+
 	/**
 	 * This method will Check if displayed data is as expected
 	 * 
@@ -73,18 +75,20 @@ public class CommonMethods {
 	 * 
 	 */
 	public static void orderDataCheck(WebElement element, String text) {
-	
-	WebElement dataCheck = element;
-	if (dataCheck.isDisplayed()){
-		String present = dataCheck.getAttribute("value");
-//		System.out.println(present);
-		if (present.equalsIgnoreCase(text)) {
-			System.out.println(text +" - text is present");
-		} else {
-		System.out.println(text+" - text is not present");
+
+		WebElement dataCheck = element;
+		if (dataCheck.isDisplayed()) {
+			String present = dataCheck.getAttribute("value");
+			if (present.equalsIgnoreCase(text)) {
+				System.out.println(text + " - text is present");
+			
+			} else {
+				System.out.println(text + " - text is not present");
+			}
+			
+		}
 	}
-	}
-	}
+
 	/**
 	 * This method will check if specified Radio Button is selected
 	 * 
@@ -100,16 +104,16 @@ public class CommonMethods {
 
 			if (elementOption.isDisplayed()) {
 				String value = elementOption.getText();
-//				System.out.println(value);
 				if (value.equalsIgnoreCase(text)) {
-					System.out.println("Option of "+text+" is selected");
+					System.out.println("Option of " + text + " is selected");
 				}
-				}else {
+			} else {
 				System.out.println("No such option of Radio Button is availible");
-				
+
 			}
 		}
 	}
+
 	/**
 	 * This method will select specified Radio Button
 	 * 
@@ -128,11 +132,11 @@ public class CommonMethods {
 //				System.out.println(value);
 				if (value.equalsIgnoreCase(text)) {
 					elementOption.click();
-					System.out.println("Option of "+text+" is selected");
+					System.out.println("Option of " + text + " is selected");
 				}
-				}else {
+			} else {
 				System.out.println("No such option of Radio Button is availible");
-				
+
 			}
 		}
 	}
@@ -159,13 +163,13 @@ public class CommonMethods {
 					}
 					hobby.click();
 				}
-//			} else {
-//				System.out.println("No such option of Check Box is availible");
+			} else {
+				System.out.println("No such option of Check Box is availible");
 			}
 
 		}
 	}
-	
+
 	/**
 	 * This method will select specified Calendar cell date
 	 * 
@@ -174,16 +178,19 @@ public class CommonMethods {
 	 * 
 	 */
 	public static void calendarDateSelection(List<WebElement> element, String wantedDate) {
-	List<WebElement> dateCells = element;
-	for (WebElement dateOB : dateCells) {
-		String dateText = dateOB.getText();
+		List<WebElement> dateCells = element;
+		for (WebElement dateOB : dateCells) {
+			String dateText = dateOB.getText();
 
-		if (dateText.equals(wantedDate)) {
-			dateOB.click();;
-		System.out.println("Option with text " + wantedDate + " is selected");
+			if (dateText.equals(wantedDate)) {
+				dateOB.click();
+				System.out.println("Option with date " + wantedDate + " is selected");
+				break;
+			} else {
+				System.out.println(wantedDate + " - date is not present");
+			}
+
 		}
-		
-	}
 	}
 
 	/**
@@ -321,6 +328,7 @@ public class CommonMethods {
 			System.out.println("Frame is not present");
 		}
 	}
+
 	/**
 	 * Method that will wait for element to be visible
 	 * 
@@ -345,24 +353,49 @@ public class CommonMethods {
 		WebDriverWait wait = new WebDriverWait(driver, time);
 		wait.until(ExpectedConditions.elementToBeClickable(locator));
 	}
-	
+
 	/**
 	 * Method that will take ScreenShot
 	 * 
 	 * @param String folderName, String fileName
 	 */
 	public static void takeScreenshot(String folderName, String fileName) {
-		TakesScreenshot ts=(TakesScreenshot)driver;
-        File scr=ts.getScreenshotAs(OutputType.FILE);
-        
-        try {
-			FileUtils.copyFile(scr, new File("screenshots/"+folderName+"/"+fileName+".png"));
+		TakesScreenshot ts = (TakesScreenshot) driver;
+		File scr = ts.getScreenshotAs(OutputType.FILE);
+
+		try {
+			FileUtils.copyFile(scr, new File("screenshots/" + folderName + "/" + fileName + ".png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 			System.out.println("Unable to take screesnhot");
 		}
 	}
-	
+
+	/**
+	 * Method that scrolls Down and Up
+	 * 
+	 * @param int pixels
+	 */
+	public static void scrollDown(int pixels) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(0," + pixels + ")");
+	}
+
+	public static void scrollUp(int pixels) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(0,-" + pixels + ")");
+	}
+
+	/**
+	 * Method that Clicks in JavaScript
+	 * 
+	 * @param WebElement element
+	 */
+	public static void jsClick(WebElement element) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].click();", element);
+	}
+
 }
 ///**********************************************************
 // * 

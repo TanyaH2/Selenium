@@ -1,4 +1,4 @@
-package com.groupTasks;
+package com.groupTasksWithScreenShots;
 
 import java.util.List;
 
@@ -26,14 +26,14 @@ public class GroupTaskT3 extends CommonMethods {
 		// 2.Go to “https://jqueryui.com/”
 		String url = "https://jqueryui.com/";
 		setUpDriver("chrome", url);
-
+		takeScreenshot("Task3", "Browser");
 		// 3.Click on “Datepicker”
 		driver.findElement(By.xpath("//a[text()='Datepicker']")).click();
 
 		// 4.Select August 10 of 2019switch
 		switchToFrame(0);
 		driver.findElement(By.cssSelector("input.hasDatepicker")).click();
-
+		
 		//1 way to chose the date :
 		//Easy way Date
 //		WebElement date=driver.findElement(By.cssSelector("input.hasDatepicker"));
@@ -63,7 +63,9 @@ public class GroupTaskT3 extends CommonMethods {
 		
 		}
 		calendarDateSelection(driver.findElements(By.xpath("//table[@class='ui-datepicker-calendar']/tbody/tr/td")),"10");
-
+		
+		takeScreenshot("Task3", "DateSelect");
+		
 		// 5.Verify date “08/10/2019” has been entered succesfully
 		
 		String verifingDate=driver.findElement(By.cssSelector("input.hasDatepicker")).getText();
