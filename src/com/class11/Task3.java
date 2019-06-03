@@ -13,11 +13,10 @@ public class Task3 extends CommonMethods {
 		setUpDriver("chrome", url);
 		 driver.findElement(By.xpath("//span[text()='Username']/preceding-sibling::input")).sendKeys("Admin");
 	       
-        driver.findElement(By.xpath("//span[text()='Password']/preceding-sibling::input")).sendKeys("admin123");
+        driver.findElement(By.xpath("//input[@name='txtPassword']/folowing-sibling::span")).sendKeys("admin123");
        
-        driver.findElement(By.cssSelector("input#btnLogin")).click();
-		
-        driver.close();
+        driver.findElement(By.xpath("//div[@id='divLoginButton']/input")).click();
+        // driver.close();
 	}
 
 }

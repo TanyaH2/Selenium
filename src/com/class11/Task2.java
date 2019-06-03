@@ -14,9 +14,7 @@ public class Task2 extends CommonMethods{
 		
 		driver.findElement(By.xpath("//div[@id='divUsername']/input")).sendKeys("Admin");
 		driver.findElement(By.xpath("//input[@id='txtPassword']/../input")).sendKeys("admin123");
-		driver.findElement(By.cssSelector("input#btnLogin")).click();
-		
-
+		driver.findElement(By.xpath("//div[@id='divLoginButton']/input")).click();		
 		driver.close();
 	}
 

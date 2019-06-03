@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+<testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="19" started-at="2019-05-28T22:32:22Z" finished-at="2019-05-28T22:32:22Z">
+  <suite name="Default suite" duration-ms="3587" started-at="2019-06-02T18:43:26Z" finished-at="2019-06-02T18:43:30Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="19" started-at="2019-05-28T22:32:22Z" finished-at="2019-05-28T22:32:22Z">
-      <class name="com.class10.test">
-        <test-method status="PASS" signature="helloWorld()[pri:0, instance:com.class10.test@643b1d11]" name="helloWorld" duration-ms="6" started-at="2019-05-28T22:32:22Z" finished-at="2019-05-28T22:32:22Z">
+    <test name="Default test" duration-ms="3587" started-at="2019-06-02T18:43:26Z" finished-at="2019-06-02T18:43:30Z">
+      <class name="com.class12.OrangeHRMLogIn">
+        <test-method status="PASS" signature="loginAndVerification()[pri:1, instance:com.class12.OrangeHRMLogIn@62ee68d8]" name="loginAndVerification" duration-ms="3479" started-at="2019-06-02T18:43:26Z" finished-at="2019-06-02T18:43:30Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- helloWorld -->
-      </class> <!-- com.class10.test -->
+        </test-method> <!-- loginAndVerification -->
+        <test-method status="PASS" signature="checkLogIn()[pri:2, instance:com.class12.OrangeHRMLogIn@62ee68d8]" name="checkLogIn" duration-ms="92" started-at="2019-06-02T18:43:30Z" finished-at="2019-06-02T18:43:30Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkLogIn -->
+      </class> <!-- com.class12.OrangeHRMLogIn -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
